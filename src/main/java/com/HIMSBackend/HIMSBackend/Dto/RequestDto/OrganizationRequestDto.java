@@ -1,15 +1,14 @@
-package com.HIMSBackend.HIMSBackend.Model;
+package com.HIMSBackend.HIMSBackend.Dto.RequestDto;
 
 
 import jakarta.persistence.Entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Organization {
+public class OrganizationRequestDto {
 }
