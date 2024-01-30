@@ -1,4 +1,4 @@
-package com.HIMSBackend.HIMSBackend.Service;
+package com.HIMSBackend.HIMSBackend.Service.Interface;
 
 import org.springframework.stereotype.Service;
 
