@@ -8,7 +8,7 @@ public class HimsBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HimsBackendApplication.class, args);
-		System.out.println("Vinay is here");
+		System.out.println("Zafar is here");
 	}
 
 }
