@@ -4,9 +4,10 @@ import com.HIMSBackend.HIMSBackend.Model.Role;
 import com.HIMSBackend.HIMSBackend.Repository.RoleRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class RoleServiceImpl implements RoleService {
 
     @Autowired
