@@ -17,7 +17,7 @@ public class GenderController {
     GenderService genderService;
 
     // Add Gender
-    @PostMapping("/add")
+    @PostMapping("/addGender")
     public ResponseEntity<?> addGender(@RequestBody Gender gender) {
         try {
             return new ResponseEntity(genderService.createGender(gender),HttpStatus.CREATED);
@@ -30,7 +30,7 @@ public class GenderController {
     }
 
     //Get All Genders
-    @GetMapping("/get")
+    @GetMapping("/getAllGender")
     public ResponseEntity getAllGenders(){
         try {
             List<Gender> genders = genderService.getAllGenders();

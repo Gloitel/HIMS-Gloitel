@@ -14,12 +14,12 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/save")
+    @PostMapping("/saveDepartment")
     public Department saveDepartment(@RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/allDepartment")
     public List<Department> getAllDepartments() {
         return departmentService.allDepartments();
     }

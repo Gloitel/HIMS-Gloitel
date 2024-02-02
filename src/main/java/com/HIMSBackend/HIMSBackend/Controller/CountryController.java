@@ -16,12 +16,12 @@ public class CountryController {
     private CountryService countryService;
 
 
-    @PostMapping("/savecountry")
+    @PostMapping("/saveCountry")
     public Country saveCountry(@RequestBody Country country) {
         return countryService.saveCountry(country);
     }
 
-    @GetMapping("/allcountry")
+    @GetMapping("/allCountry")
     public List<Country> getAllDepartments() {
         return countryService.allCountry();
     }

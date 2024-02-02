@@ -15,12 +15,12 @@ public class DesignationController {
     @Autowired
     private DesignationService designationService;
 
-    @PostMapping("/savedesignation")
+    @PostMapping("/saveDesignation")
     public Designation savedesignation(@RequestBody Designation designation) {
         return designationService.saveDegignation(designation);
     }
 
-    @GetMapping("/alldesignation")
+    @GetMapping("/allDesignation")
     public List<Designation> getAllState() {
         return designationService.allDegignation();
     }
