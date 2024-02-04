@@ -3,6 +3,8 @@ package com.HIMSBackend.HIMSBackend.Controller;
 import com.HIMSBackend.HIMSBackend.Model.Hr_Details;
 import com.HIMSBackend.HIMSBackend.Service.Interface.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,9 +18,9 @@ public class HrDetailsController {
         private HrService hrService;
 
         @PostMapping("saveHrDetails")
-    public Hr_Details saveHrDetails(@RequestBody Hr_Details hr_details)
+    public ResponseEntity<?> saveHrDetails(@RequestBody Hr_Details hr_details)
         {
-            return hrService.saveHrDetails(hr_details);
+            return new ResponseEntity(hrService.saveHrDetails(hr_details), HttpStatus.CREATED);
         }
 
 

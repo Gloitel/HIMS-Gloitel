@@ -1,9 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -18,6 +15,12 @@ public class Designation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String desinationDescription;
-    String desinationName;
+    String designationDescription;
+    String designationName;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+
 }

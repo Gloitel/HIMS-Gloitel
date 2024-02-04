@@ -4,7 +4,6 @@ import com.HIMSBackend.HIMSBackend.Model.Hr_Details;
 import com.HIMSBackend.HIMSBackend.Repository.HrRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

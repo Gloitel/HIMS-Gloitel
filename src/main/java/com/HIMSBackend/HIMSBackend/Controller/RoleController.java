@@ -1,9 +1,10 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
-import com.HIMSBackend.HIMSBackend.Model.Department;
 import com.HIMSBackend.HIMSBackend.Model.Role;
 import com.HIMSBackend.HIMSBackend.Service.Interface.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/saveRole")
-    public Role saveRole(@RequestBody Role role) {
-        return roleService.saveRole(role);
+    public ResponseEntity<?> saveRole(@RequestBody Role role) {
+        return new ResponseEntity(roleService.saveRole(role), HttpStatus.CREATED);
     }
 
     @GetMapping("/allRole")

@@ -1,6 +1,5 @@
 package com.HIMSBackend.HIMSBackend.Service.Interface;
 
-import com.HIMSBackend.HIMSBackend.Model.Department;
 import com.HIMSBackend.HIMSBackend.Model.Role;
 import org.springframework.stereotype.Service;
 

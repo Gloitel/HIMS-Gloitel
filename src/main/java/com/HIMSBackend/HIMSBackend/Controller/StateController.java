@@ -3,6 +3,8 @@ package com.HIMSBackend.HIMSBackend.Controller;
 import com.HIMSBackend.HIMSBackend.Model.State;
 import com.HIMSBackend.HIMSBackend.Service.Interface.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +17,12 @@ public class StateController {
     @Autowired
     private StateService stateService;
 
-    @PostMapping("/savestate")
-    public State saveState(@RequestBody State state) {
-        return stateService.saveState(state);
+    @PostMapping("/saveState")
+    public ResponseEntity<?> saveState(@RequestBody State state) {
+        return new ResponseEntity(stateService.saveState(state), HttpStatus.CREATED);
     }
 
-    @GetMapping("/allstate")
+    @GetMapping("/allState")
     public List<State> getAllState() {
         return stateService.allState();
     }

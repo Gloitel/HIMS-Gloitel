@@ -1,11 +1,10 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -21,5 +20,9 @@ public class Department {
 
     String departmentName;
     String departmentDescription;
+
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Designation> designations;
+
 
 }

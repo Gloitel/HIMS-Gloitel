@@ -3,6 +3,8 @@ package com.HIMSBackend.HIMSBackend.Controller;
 import com.HIMSBackend.HIMSBackend.Model.Organization;
 import com.HIMSBackend.HIMSBackend.Service.Interface.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +19,9 @@ public class OrganizationController {
     private OrganizationService organizationService;
 
     @PostMapping("/saveOrganization")
-    public Organization saveOrganization(@RequestBody Organization organization)
+    public ResponseEntity<?> saveOrganization(@RequestBody Organization organization)
     {
-        return organizationService.saveOrgnization(organization);
+        return new ResponseEntity(organizationService.saveOrgnization(organization), HttpStatus.CREATED);
     }
 
 
