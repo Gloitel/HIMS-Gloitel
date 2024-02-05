@@ -21,6 +21,9 @@ public class HrDetailsController {
         @PostMapping("/save")
     public ResponseEntity<?> saveHrDetails(@RequestBody Hr_Details hr_details) {
             try {
+                System.out.println(hr_details.getBirthDate());
+                System.out.println("=========================================================");
+
 
                 return new ResponseEntity(hrService.saveHrDetails(hr_details), HttpStatus.CREATED);
             }
