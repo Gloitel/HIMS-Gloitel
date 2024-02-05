@@ -1,9 +1,10 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -11,39 +12,42 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Organization {
+public class SuperMasterAdmin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String organization_name;
+    String company_name;
+
+    String comapny_type;
 
     String ceo_name;
-
-    String organization_type;
 
     String mobile_no;
 
     String email;
 
-    String pan_no;
-
-    @ManyToOne
-    String country;
-
     String address;
 
-    String gst_no;
+    String pan_no;
 
     String aadhar_no;
 
-    String license_no;
+    String gst_no;
+
 
     @ManyToOne
     String role;
 
     String password;
+
+
+    @ManyToOne
+    String country;
+
+    @OneToMany
+    List<Organization> organizationList;
 
 
 }
