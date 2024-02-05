@@ -21,17 +21,32 @@ public class DepartmentController {
 //        return new ResponseEntity(departmentService.saveDepartment(department), HttpStatus.CREATED);
 //    }
 
-    @GetMapping("/all")
-    public List<Department> getAllDepartments() {
-        return departmentService.allDepartments();
+    @GetMapping("/getAll")
+    public ResponseEntity getAllDepartments() {
+        try
+        {
+            List<Department> departments = departmentService.allDepartments();
+            return new ResponseEntity(departments, HttpStatus.ACCEPTED);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return new ResponseEntity("Some Un catch exception comes with Get All Department", HttpStatus.BAD_REQUEST);
+        }
     }
 
 
 
     @PostMapping("/save")
     public ResponseEntity<Department> createDepartment(@RequestBody Department department) {
-        Department savedDepartment = departmentService.createDepartment(department);
-        return new ResponseEntity<>(savedDepartment, HttpStatus.CREATED);
+        try {
+            Department savedDepartment = departmentService.createDepartment(department);
+            return new ResponseEntity<>(savedDepartment, HttpStatus.CREATED);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity("Please fill correct  Department Details", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/delete/{id}")
