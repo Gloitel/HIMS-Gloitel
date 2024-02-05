@@ -20,11 +20,30 @@ public class Organization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String organizationName;
-    String organizationAddress;
-    String gstNo;
-    String licenseNo;
+    String organization_name;
 
+    String ceo_name;
 
+    String organization_type;
+
+    String mobile_no;
+
+    String email;
+
+    String pan_no;
+
+    String country;
+
+    String address;
+
+    String gst_no;
+
+    String aadhar_no;
+
+    String license_no;
+
+    String role;
+
+    String password;
 
 }

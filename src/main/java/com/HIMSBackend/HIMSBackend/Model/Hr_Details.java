@@ -21,13 +21,13 @@ public class Hr_Details {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String firstName;
-    String middleName;
-    String lastName;
+    String first_name;
+    String middle_name;
+    String last_name;
     Long phone_no;
-    String personal_Email;
-    Date birthDate;
-    String CompanyProvidedMail;
-    String Password;
+    String personal_email;
+    Date birth_date;
+    String company_provided_mail;
+    String password;
 
 }
