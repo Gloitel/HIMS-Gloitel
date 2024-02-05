@@ -38,15 +38,15 @@ public class SuperMasterAdmin {
 
 
     @ManyToOne
-    String role;
+    Role role;
 
     String password;
 
 
     @ManyToOne
-    String country;
+    Country country;
 
-    @OneToMany
+    @OneToMany(mappedBy = "SuperMasterAdmin", cascade = CascadeType.ALL)
     List<Organization> organizationList;
 
 

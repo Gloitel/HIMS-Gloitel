@@ -1,11 +1,10 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -20,7 +19,11 @@ public class Country {
     Long id;
 
     String countryName;
+
     String countryDescription;
+
+    @OneToMany(mappedBy = "Country", cascade = CascadeType.ALL)
+    List<Organization> organizationList;
 
 
 

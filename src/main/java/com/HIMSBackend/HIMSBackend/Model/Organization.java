@@ -30,7 +30,8 @@ public class Organization {
     String pan_no;
 
     @ManyToOne
-    String country;
+    @JoinColumn
+    Country country;
 
     String address;
 
@@ -41,9 +42,12 @@ public class Organization {
     String license_no;
 
     @ManyToOne
-    String role;
+    @JoinColumn
+    Role role;
 
     String password;
+
+
 
 
 }
