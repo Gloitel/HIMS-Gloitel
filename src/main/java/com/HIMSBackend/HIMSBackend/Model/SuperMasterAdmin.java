@@ -1,6 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -18,14 +19,17 @@ public class SuperMasterAdmin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @NotNull(message = "Company name can not be null")
     String company_name;
 
     String comapny_type;
 
     String ceo_name;
 
+    @NotNull(message = "Phone No can not be null")
     String mobile_no;
 
+    @NotNull(message = "Email can not be null")
     String email;
 
     String address;
