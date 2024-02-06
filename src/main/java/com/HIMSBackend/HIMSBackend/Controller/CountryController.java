@@ -1,6 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
 import com.HIMSBackend.HIMSBackend.Model.Country;
+import com.HIMSBackend.HIMSBackend.Model.Gender;
 import com.HIMSBackend.HIMSBackend.Service.Interface.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,15 +18,36 @@ public class CountryController {
     private CountryService countryService;
 
 
-    @PostMapping("/saveCountry")
+    @PostMapping("/save")
     public ResponseEntity<?> saveCountry(@RequestBody Country country) {
-        return new ResponseEntity(countryService.saveCountry(country), HttpStatus.CREATED);
+        try {
+            return new ResponseEntity(countryService.saveCountry(country), HttpStatus.CREATED);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity("Please fill correct  Country Details", HttpStatus.BAD_REQUEST);
+        }
     }
 
-    @GetMapping("/allCountry")
-    public List<Country> getAllDepartments() {
 
-        return countryService.allCountry();
+
+
+    @GetMapping("/getAll")
+    public ResponseEntity getAllCountry() {
+        try
+        {
+            List<Country> countries = countryService.allCountry();
+            return new ResponseEntity(countries, HttpStatus.ACCEPTED);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return new ResponseEntity("Some Un catch exception comes with Get All Genders", HttpStatus.BAD_REQUEST);
+        }
+
     }
+
+
+
 
 }

@@ -17,13 +17,24 @@ public class StateController {
     @Autowired
     private StateService stateService;
 
-    @PostMapping("/saveState")
+    @PostMapping("/save")
     public ResponseEntity<?> saveState(@RequestBody State state) {
-        return new ResponseEntity(stateService.saveState(state), HttpStatus.CREATED);
+        try {
+            return new ResponseEntity(stateService.saveState(state), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity("Please fill correct  State Details", HttpStatus.BAD_REQUEST);
+        }
     }
 
-    @GetMapping("/allState")
-    public List<State> getAllState() {
-        return stateService.allState();
+    @GetMapping("/getAll")
+    public ResponseEntity getAllState() {
+        try {
+            List<State> states = stateService.allState();
+            return new ResponseEntity("", HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity("Some Un catch exception comes with Get All State", HttpStatus.BAD_REQUEST);
+
+        }
     }
 }
