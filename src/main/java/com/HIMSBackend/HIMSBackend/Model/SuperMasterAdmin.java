@@ -38,12 +38,14 @@ public class SuperMasterAdmin {
 
 
     @ManyToOne
+    @JoinColumn
     Role role;
 
     String password;
 
 
     @ManyToOne
+    @JoinColumn
     Country country;
 
     @OneToMany(mappedBy = "SuperMasterAdmin", cascade = CascadeType.ALL)
