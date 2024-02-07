@@ -23,6 +23,5 @@ public class SuperMasterAdminRequestDto {
     String pan_no;
     String aadhar_no;
     String gst_no;
-    String password;
     Country country;
 }
