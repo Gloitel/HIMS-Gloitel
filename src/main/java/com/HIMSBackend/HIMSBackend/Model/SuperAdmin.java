@@ -1,6 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
-import com.HIMSBackend.HIMSBackend.Repository.Enum.RoleType;
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

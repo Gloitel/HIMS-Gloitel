@@ -1,4 +1,4 @@
-package com.HIMSBackend.HIMSBackend.Repository.Enum;
+package com.HIMSBackend.HIMSBackend.Enum;
 
 public enum RoleType {
     super_admin,
