@@ -1,14 +1,12 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
-import com.HIMSBackend.HIMSBackend.Repository.Enum.RoleType;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -16,7 +14,7 @@ import jakarta.persistence.Enumerated;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SuperAdmin extends Common {
+public class Admin extends Common {
 
     @Column(name = "email")
     private String email;
@@ -28,4 +26,8 @@ public class SuperAdmin extends Common {
     @Column(name = "role")
     private RoleType role;
 
+    @Column(name = "role_type")
+    private String roleType;
+
+    // Getters and setters
 }
