@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SuperMasterAdminResponseDto {
+public class SuperAdminResponseDto {
 
     String company_name;
     String ceo_name;

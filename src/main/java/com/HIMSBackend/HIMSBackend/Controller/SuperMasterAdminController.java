@@ -1,7 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
-import com.HIMSBackend.HIMSBackend.Dto.Request.SuperMasterAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperMasterAdminResponseDto;
+import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperMasterAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +19,9 @@ public class SuperMasterAdminController {
     SuperMasterAdminService superMasterAdminService;
 
     @PostMapping("/create")
-    public ResponseEntity createSuperMasterAdmin(@RequestBody SuperMasterAdminRequestDto superMasterAdminRequestDto){
+    public ResponseEntity createSuperMasterAdmin(@RequestBody SuperAdminRequestDto superMasterAdminRequestDto){
         try{
-            SuperMasterAdminResponseDto response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
+            SuperAdminResponseDto response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
             return new ResponseEntity(response, HttpStatus.CREATED);
         }
         catch(Exception e){

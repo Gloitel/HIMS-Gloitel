@@ -5,7 +5,6 @@ import com.HIMSBackend.HIMSBackend.Repository.DesignationRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.DesignationService;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

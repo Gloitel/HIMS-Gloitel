@@ -1,4 +1,4 @@
-package com.HIMSBackend.HIMSBackend.Enum;
+package com.HIMSBackend.HIMSBackend.Repository.Enum;
 
 public enum RoleType {
 

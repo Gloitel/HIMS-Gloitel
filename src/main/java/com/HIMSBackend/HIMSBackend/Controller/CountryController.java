@@ -1,7 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
 import com.HIMSBackend.HIMSBackend.Model.Country;
-import com.HIMSBackend.HIMSBackend.Model.Gender;
 import com.HIMSBackend.HIMSBackend.Service.Interface.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

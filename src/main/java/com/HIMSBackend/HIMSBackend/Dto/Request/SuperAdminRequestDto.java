@@ -1,8 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Dto.Request;
 
 import com.HIMSBackend.HIMSBackend.Model.Country;
-import com.HIMSBackend.HIMSBackend.Model.Role;
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SuperMasterAdminRequestDto {
+public class SuperAdminRequestDto {
 
 
     String company_name;

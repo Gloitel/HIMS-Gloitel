@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SuperMasterAdmin {
+public class SuperAdmin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

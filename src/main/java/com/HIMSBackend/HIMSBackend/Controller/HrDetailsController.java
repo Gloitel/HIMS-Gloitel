@@ -1,6 +1,5 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
-import com.HIMSBackend.HIMSBackend.Model.Gender;
 import com.HIMSBackend.HIMSBackend.Model.Hr_Details;
 import com.HIMSBackend.HIMSBackend.Service.Interface.HrService;
 import org.springframework.beans.factory.annotation.Autowired;

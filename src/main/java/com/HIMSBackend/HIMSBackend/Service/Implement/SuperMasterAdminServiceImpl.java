@@ -1,10 +1,9 @@
 package com.HIMSBackend.HIMSBackend.Service.Implement;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.HIMSBackend.HIMSBackend.Dto.Request.SuperMasterAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperMasterAdminResponseDto;
-import com.HIMSBackend.HIMSBackend.Model.Country;
-import com.HIMSBackend.HIMSBackend.Model.SuperMasterAdmin;
+import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
+import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
 import com.HIMSBackend.HIMSBackend.Repository.SuperMasterAdminRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperMasterAdminService;
 import com.HIMSBackend.HIMSBackend.Util.RandomPasswordGenerator;
@@ -23,11 +22,11 @@ public class SuperMasterAdminServiceImpl implements SuperMasterAdminService {
     RandomPasswordGenerator passwordGenerator;
 
     @Override
-    public SuperMasterAdminResponseDto createSuperMasterAdmin(SuperMasterAdminRequestDto superMasterAdminRequestDto) {
-        SuperMasterAdminResponseDto response = new SuperMasterAdminResponseDto();
+    public SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
+        SuperAdminResponseDto response = new SuperAdminResponseDto();
 
         //Super master admin
-        SuperMasterAdmin sma = new SuperMasterAdmin();
+        SuperAdmin sma = new SuperAdmin();
         sma.setCompany_name(superMasterAdminRequestDto.getCompany_name());
         sma.setComapny_type(superMasterAdminRequestDto.getComapny_type());
         sma.setCeo_name(superMasterAdminRequestDto.getCeo_name());
@@ -44,7 +43,7 @@ public class SuperMasterAdminServiceImpl implements SuperMasterAdminService {
         sma.setPassword(encPass);
 //        sma.setRole();
 
-        SuperMasterAdmin savedSMA = superMasterAdminRepository.save(sma);
+        SuperAdmin savedSMA = superMasterAdminRepository.save(sma);
 
 
 
