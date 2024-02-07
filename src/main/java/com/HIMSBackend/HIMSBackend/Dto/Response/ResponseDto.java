@@ -9,10 +9,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SuperAdminResponseDto {
+public class ResponseDto {
 
-    String company_name;
-    String ceo_name;
     String message;
+    boolean success;
 
 }

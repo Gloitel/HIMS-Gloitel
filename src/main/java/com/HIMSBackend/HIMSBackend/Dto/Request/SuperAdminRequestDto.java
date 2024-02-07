@@ -1,5 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Dto.Request;
 
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import com.HIMSBackend.HIMSBackend.Model.Country;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,16 +11,8 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 public class SuperAdminRequestDto {
-
-
-    String company_name;
-    String comapny_type;
-    String ceo_name;
-    String mobile_no;
+    String name;
     String email;
-    String address;
-    String pan_no;
-    String aadhar_no;
-    String gst_no;
-    Country country;
+    String phone_no;
+    String password;
 }

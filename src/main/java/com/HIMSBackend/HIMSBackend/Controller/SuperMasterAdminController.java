@@ -1,7 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperMasterAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,13 +20,16 @@ public class SuperMasterAdminController {
 
     @PostMapping("/create")
     public ResponseEntity createSuperMasterAdmin(@RequestBody SuperAdminRequestDto superMasterAdminRequestDto){
+        ResponseDto response = new ResponseDto();
         try{
-            SuperAdminResponseDto response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
+            response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
             return new ResponseEntity(response, HttpStatus.CREATED);
         }
         catch(Exception e){
             e.printStackTrace();
-            return new ResponseEntity("Please fill all mendatory fields", HttpStatus.BAD_REQUEST);
+            response.setMessage("Please fill all mendatory fields");
+            response.setSuccess(false);
+            return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
         }
     }
 }

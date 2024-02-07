@@ -1,8 +1,9 @@
 package com.HIMSBackend.HIMSBackend.Service.Implement;
 
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
 import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
 import com.HIMSBackend.HIMSBackend.Repository.SuperMasterAdminRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperMasterAdminService;
@@ -22,31 +23,32 @@ public class SuperMasterAdminServiceImpl implements SuperMasterAdminService {
     RandomPasswordGenerator passwordGenerator;
 
     @Override
-    public SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
-        SuperAdminResponseDto response = new SuperAdminResponseDto();
+    public ResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
 
         //Super master admin
         SuperAdmin sma = new SuperAdmin();
-        sma.setCompany_name(superMasterAdminRequestDto.getCompany_name());
-        sma.setComapny_type(superMasterAdminRequestDto.getComapny_type());
-        sma.setCeo_name(superMasterAdminRequestDto.getCeo_name());
-        sma.setMobile_no(superMasterAdminRequestDto.getMobile_no());
-        sma.setEmail(superMasterAdminRequestDto.getEmail());
-        sma.setAddress(superMasterAdminRequestDto.getAddress());
-        sma.setPan_no(superMasterAdminRequestDto.getPan_no());
-        sma.setAadhar_no(superMasterAdminRequestDto.getAadhar_no());
-        sma.setGst_no(superMasterAdminRequestDto.getGst_no());
-        sma.setCountry(superMasterAdminRequestDto.getCountry());
 
-        String raw = passwordGenerator.generateRandomString(6);
-        String encPass = passwordEncoder.encode(raw);
+        sma.setName(superMasterAdminRequestDto.getName());
+        sma.setEmail(superMasterAdminRequestDto.getEmail());
+        sma.setEmailSet(true);
+        sma.setEmailVerified(true);
+        sma.setPhoneNumber(superMasterAdminRequestDto.getPhone_no());
+        sma.setPhoneNumberSet(true);
+        sma.setPhoneNumberVerified(true);
+        sma.setRole(RoleType.valueOf("super_admin"));
+        sma.setActivated(true);
+
+        String encPass = passwordEncoder.encode(superMasterAdminRequestDto.getPassword());
         sma.setPassword(encPass);
-//        sma.setRole();
 
         SuperAdmin savedSMA = superMasterAdminRepository.save(sma);
 
+        ResponseDto response = new ResponseDto();
 
 
+        response.setMessage("Congratulation "+savedSMA.getName()+" Your Id is "+savedSMA.getEmail()
+                +" and Role- "+savedSMA.getRole()+" has been successfully created");
+        response.setSuccess(true);
 
         return response;
     }
