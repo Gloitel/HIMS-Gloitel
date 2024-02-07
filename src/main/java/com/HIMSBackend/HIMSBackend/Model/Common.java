@@ -40,7 +40,7 @@ public class Common {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private GenderType gender;
+    private Gender gender;
 
     @Column(name = "profession")
     private String profession;
