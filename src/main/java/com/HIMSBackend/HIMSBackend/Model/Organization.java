@@ -47,7 +47,8 @@ public class Organization {
 
     String password;
 
-
+    @ManyToOne
+    SuperMasterAdmin super_master_admin;
 
 
 }

@@ -52,7 +52,7 @@ public class SuperMasterAdmin {
     @JoinColumn
     Country country;
 
-    @OneToMany(mappedBy = "SuperMasterAdmin", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "super_master_admin", cascade = CascadeType.ALL)
     List<Organization> organizationList;
 
 
