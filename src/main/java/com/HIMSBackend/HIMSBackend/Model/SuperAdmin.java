@@ -1,12 +1,12 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)

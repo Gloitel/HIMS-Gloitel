@@ -1,4 +1,4 @@
-package com.HIMSBackend.HIMSBackend.Model;
+package com.HIMSBackend.HIMSBackend.Enum;
 
 public enum RoleType {
     ADMIN,

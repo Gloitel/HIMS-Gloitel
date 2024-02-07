@@ -1,5 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
