@@ -1,10 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -20,11 +17,38 @@ public class Organization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String organizationName;
-    String organizationAddress;
-    String gstNo;
-    String licenseNo;
+    String organization_name;
 
+    String ceo_name;
+
+    String organization_type;
+
+    String mobile_no;
+
+    String email;
+
+    String pan_no;
+
+    @ManyToOne
+    @JoinColumn
+    Country country;
+
+    String address;
+
+    String gst_no;
+
+    String aadhar_no;
+
+    String license_no;
+
+    @ManyToOne
+    @JoinColumn
+    Role role;
+
+    String password;
+
+    @ManyToOne
+    SuperMasterAdmin super_master_admin;
 
 
 }

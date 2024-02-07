@@ -38,7 +38,7 @@ public class GenderController {
         } catch (Exception e) {
             // Handle exceptions and return appropriate responses
             e.printStackTrace();
-            return new ResponseEntity("Some Un catch exception comes with Get All Genders", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Please Add Gender First", HttpStatus.BAD_REQUEST);
         }
     }
 }

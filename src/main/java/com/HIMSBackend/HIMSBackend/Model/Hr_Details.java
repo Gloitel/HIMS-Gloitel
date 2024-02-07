@@ -22,22 +22,29 @@ public class Hr_Details {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @NotNull(message = "First name can not be null")
-    String firstName;
 
-    String middleName;
+    @NotNull(message = "First name can not be null")
+    String first_name;
+
+    String middle_name;
+  
     @NotNull(message = "Last Name can not be null")
-    String lastName;
+    String last_name;
+  
     @NotNull(message = "Phone No can not be null")
     Long phone_no;
+  
     @NotNull(message = "Email can not be null")
-    String personal_Email;
+    String personal_email;
+  
     @NotNull(message = "Birth can not be null")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    Date birthDate;
+    Date birth_date;
+  
     @NotNull(message = "Company provided mail can not be null")
-    String CompanyProvidedMail;
+    String company_provided_mail;
+  
     @NotNull(message = "Password can not be null")
-    String Password;
+    String password;
 
 }
