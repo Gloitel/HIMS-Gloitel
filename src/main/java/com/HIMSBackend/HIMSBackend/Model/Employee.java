@@ -11,8 +11,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
+@DiscriminatorValue("Employee")
 public class Employee extends Common{
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,6 +27,8 @@ public class Employee extends Common{
 //    @Enumerated(EnumType.STRING)
 //    @Column(name = "role")
 //    private RoleType role;
+
+
 
     @Column(name = "role_type")
     private String roleType;

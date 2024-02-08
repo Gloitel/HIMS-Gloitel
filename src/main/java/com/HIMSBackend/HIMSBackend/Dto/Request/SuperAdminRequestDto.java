@@ -1,5 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Dto.Request;
 
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import com.HIMSBackend.HIMSBackend.Model.Country;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

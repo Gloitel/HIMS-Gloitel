@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
+@DiscriminatorValue("SuperAdmin")
 public class SuperAdmin extends Common {
 
     @Id
@@ -26,6 +27,5 @@ public class SuperAdmin extends Common {
 //
 //    @Enumerated(EnumType.STRING)
 //    @Column(name = "role")
-//    private RoleType role;
-
+//    private RoleType role
 }

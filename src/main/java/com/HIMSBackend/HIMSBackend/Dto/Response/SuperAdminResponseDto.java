@@ -21,4 +21,5 @@ public class SuperAdminResponseDto {
     boolean isPhoneNumberSet;
     boolean isEmailVerified;
     boolean isEmailSet;
+
 }

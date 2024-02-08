@@ -83,16 +83,19 @@ public class Common {
     private boolean isEmailSet;
 
     @Column(name = "is_email_verified")
-    private Boolean isEmailVerified;
+    private boolean isEmailVerified;
 
     @Column(name = "email_token")
     private String emailToken;
+
+    @Column(name = "phone_number") // new added
+    private String phoneNumber;
 
     @Column(name = "is_phone_number_set")
     private boolean isPhoneNumberSet;
 
     @Column(name = "is_phone_number_verified")
-    private Boolean isPhoneNumberVerified;
+    private boolean isPhoneNumberVerified;
 
     @Column(name = "phone_number_token")
     private String phoneNumberToken;

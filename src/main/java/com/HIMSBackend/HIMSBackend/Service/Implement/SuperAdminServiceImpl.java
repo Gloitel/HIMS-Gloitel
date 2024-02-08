@@ -36,12 +36,13 @@ public class SuperAdminServiceImpl implements SuperAdminService {
         sma.setEmail(superMasterAdminRequestDto.getEmail());
         sma.setEmailSet(true);
 //        sma.setEmailVerified(true);
-        sma.setIsEmailVerified(true);
+       // sma.setIssetIsEmailVerified(true);
+        sma.setEmailVerified(true);
 //        sma.setPhoneNumber(superMasterAdminRequestDto.getPhone_no());
         sma.setPersonal(new Personal(superMasterAdminRequestDto.getEmail(), superMasterAdminRequestDto.getPhone_no()));
         sma.setPhoneNumberSet(true);
         //sma.setPhoneNumberVerified(true);
-        sma.setIsPhoneNumberVerified(true);
+        sma.setPhoneNumberVerified(true);
         sma.setRole(RoleType.valueOf("super_admin"));
         sma.setActivated(true);
 
@@ -71,11 +72,11 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 //        boolean isPasswordSet;
         res.setPasswordSet(savedSMA.isPasswordSet());
 //        boolean isPhoneNumberVerified;
-        res.setPhoneNumberVerified(savedSMA.getIsPhoneNumberVerified());
+        res.setPhoneNumberVerified(savedSMA.isPhoneNumberVerified());
 //        boolean isPhoneNumberSet;
         res.setPhoneNumberSet(savedSMA.isPhoneNumberSet());
 //        boolean isEmailVerified;
-        res.setEmailVerified(savedSMA.getIsEmailVerified());
+        res.setEmailVerified(savedSMA.isEmailVerified());
 //        boolean isEmailSet;
         res.setEmailSet(savedSMA.isEmailSet());
 

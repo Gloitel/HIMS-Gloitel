@@ -1,6 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
 import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,13 @@ public class SuperAdminController {
 
     @PostMapping("/create")
     public ResponseEntity createSuperMasterAdmin(@RequestBody SuperAdminRequestDto superMasterAdminRequestDto){
+
         Map<String, Object> payload = new HashMap<>();
         try{
             SuperAdminResponseDto response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
             payload.put("payload",response);
             payload.put("message","SuccessFully Created SuperAdmin");
-            payload.put("status code",HttpStatus.CREATED);
+            payload.put("status code",201);
             payload.put("Success",true);
 
             return new ResponseEntity(payload, HttpStatus.CREATED);
