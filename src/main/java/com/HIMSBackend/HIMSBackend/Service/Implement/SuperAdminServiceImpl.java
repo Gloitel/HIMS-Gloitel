@@ -5,8 +5,10 @@ import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
 
+import com.HIMSBackend.HIMSBackend.Model.Admin;
 import com.HIMSBackend.HIMSBackend.Model.Personal;
 import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
+import com.HIMSBackend.HIMSBackend.Repository.AdminRepository;
 import com.HIMSBackend.HIMSBackend.Repository.SuperAdminRepository;
 import com.HIMSBackend.HIMSBackend.Repository.SuperAdminRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperAdminService;
@@ -15,12 +17,16 @@ import com.HIMSBackend.HIMSBackend.Util.RandomPasswordGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SuperAdminServiceImpl implements SuperAdminService {
 
     @Autowired
-    SuperAdminRepository superMasterAdminRepository;
+    SuperAdminRepository superAdminRepository;
 
+    @Autowired
+    AdminRepository adminRepository;
     //    @Autowired
 //    private PasswordEncoder passwordEncoder;
     @Autowired
@@ -51,7 +57,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
         sma.setPassword(superMasterAdminRequestDto.getPassword());
 
 
-        SuperAdmin savedSMA = superMasterAdminRepository.save(sma);
+        SuperAdmin savedSMA = superAdminRepository.save(sma);
 
      //   ResponseDto response = new ResponseDto();
         SuperAdminResponseDto res = new SuperAdminResponseDto();
@@ -85,5 +91,10 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 //        response.setSuccess(true);
 
         return res;
+    }
+
+    @Override
+    public List<Admin> getAllAdmins() {
+        return adminRepository.findAll();
     }
 }

@@ -18,6 +18,9 @@ public class Admin extends Common {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn
+    SuperAdmin super_admin;
 
     // Getters and setters
 }

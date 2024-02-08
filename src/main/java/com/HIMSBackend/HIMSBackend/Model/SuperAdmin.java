@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -19,6 +21,8 @@ public class SuperAdmin extends Common {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(mappedBy = "super_admin", cascade = CascadeType.ALL)
+    List<Admin> adminList;
 //    @Column(name = "email")
 //    private String email;
 //
