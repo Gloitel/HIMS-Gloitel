@@ -1,7 +1,8 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
-import com.HIMSBackend.HIMSBackend.Dto.Request.SuperMasterAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperMasterAdminResponseDto;
+import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperMasterAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,14 +20,17 @@ public class SuperMasterAdminController {
     SuperMasterAdminService superMasterAdminService;
 
     @PostMapping("/create")
-    public ResponseEntity createSuperMasterAdmin(@RequestBody SuperMasterAdminRequestDto superMasterAdminRequestDto){
+    public ResponseEntity createSuperMasterAdmin(@RequestBody SuperAdminRequestDto superMasterAdminRequestDto){
+        SuperAdminResponseDto response;
         try{
-            SuperMasterAdminResponseDto response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
+            response = superMasterAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
             return new ResponseEntity(response, HttpStatus.CREATED);
         }
         catch(Exception e){
             e.printStackTrace();
-            return new ResponseEntity("Please fill all mendatory fields", HttpStatus.BAD_REQUEST);
+//            response.setMessage("Please fill all mendatory fields");
+//            response.setSuccess(false);
+            return new ResponseEntity("Please fill all the feilds", HttpStatus.BAD_REQUEST);
         }
     }
 }

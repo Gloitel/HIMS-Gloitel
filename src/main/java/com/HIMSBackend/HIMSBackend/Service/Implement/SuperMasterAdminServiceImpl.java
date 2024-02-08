@@ -1,10 +1,11 @@
 package com.HIMSBackend.HIMSBackend.Service.Implement;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-import com.HIMSBackend.HIMSBackend.Dto.Request.SuperMasterAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperMasterAdminResponseDto;
-import com.HIMSBackend.HIMSBackend.Model.Country;
-import com.HIMSBackend.HIMSBackend.Model.SuperMasterAdmin;
+import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
+import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
 import com.HIMSBackend.HIMSBackend.Repository.SuperMasterAdminRepository;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperMasterAdminService;
 import com.HIMSBackend.HIMSBackend.Util.RandomPasswordGenerator;
@@ -17,38 +18,61 @@ public class SuperMasterAdminServiceImpl implements SuperMasterAdminService {
     @Autowired
     SuperMasterAdminRepository superMasterAdminRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
     @Autowired
     RandomPasswordGenerator passwordGenerator;
 
     @Override
-    public SuperMasterAdminResponseDto createSuperMasterAdmin(SuperMasterAdminRequestDto superMasterAdminRequestDto) {
-        SuperMasterAdminResponseDto response = new SuperMasterAdminResponseDto();
+    public SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
 
         //Super master admin
-        SuperMasterAdmin sma = new SuperMasterAdmin();
-        sma.setCompany_name(superMasterAdminRequestDto.getCompany_name());
-        sma.setComapny_type(superMasterAdminRequestDto.getComapny_type());
-        sma.setCeo_name(superMasterAdminRequestDto.getCeo_name());
-        sma.setMobile_no(superMasterAdminRequestDto.getMobile_no());
+        SuperAdmin sma = new SuperAdmin();
+
+        sma.setName(superMasterAdminRequestDto.getName());
         sma.setEmail(superMasterAdminRequestDto.getEmail());
-        sma.setAddress(superMasterAdminRequestDto.getAddress());
-        sma.setPan_no(superMasterAdminRequestDto.getPan_no());
-        sma.setAadhar_no(superMasterAdminRequestDto.getAadhar_no());
-        sma.setGst_no(superMasterAdminRequestDto.getGst_no());
-        sma.setCountry(superMasterAdminRequestDto.getCountry());
+        sma.setEmailSet(true);
+        sma.setEmailVerified(true);
+        sma.setPhoneNumber(superMasterAdminRequestDto.getPhone_no());
+        sma.setPhoneNumberSet(true);
+        sma.setPhoneNumberVerified(true);
+        sma.setRole(RoleType.valueOf("super_admin"));
+        sma.setActivated(true);
 
-        String raw = passwordGenerator.generateRandomString(6);
-        String encPass = passwordEncoder.encode(raw);
-        sma.setPassword(encPass);
-//        sma.setRole();
-
-        SuperMasterAdmin savedSMA = superMasterAdminRepository.save(sma);
-
+//        String encPass = passwordEncoder.encode(superMasterAdminRequestDto.getPassword());
+//        sma.setPassword(encPass);
+        sma.setPassword(superMasterAdminRequestDto.getPassword());
 
 
+        SuperAdmin savedSMA = superMasterAdminRepository.save(sma);
 
-        return response;
+        ResponseDto response = new ResponseDto();
+        SuperAdminResponseDto res = new SuperAdminResponseDto();
+//        String name;
+        res.setName(savedSMA.getName());
+//        String email;
+        res.setEmail(savedSMA.getEmail());
+//        String phone_number;
+        res.setPhone_number(savedSMA.getPhoneNumber());
+//        boolean isActivated;
+        res.setActivated(savedSMA.isActivated());
+//        boolean isPasswordVerified;
+        res.setPasswordVerified(savedSMA.isEmailVerified());
+//        boolean isPasswordSet;
+        res.setPasswordSet(savedSMA.isPasswordSet());
+//        boolean isPhoneNumberVerified;
+        res.setPhoneNumberVerified(savedSMA.isPhoneNumberVerified());
+//        boolean isPhoneNumberSet;
+        res.setPhoneNumberSet(savedSMA.isPhoneNumberSet());
+//        boolean isEmailVerified;
+        res.setEmailVerified(savedSMA.isEmailVerified());
+//        boolean isEmailSet;
+        res.setEmailSet(savedSMA.isEmailSet());
+
+//        response.setMessage("Congratulation "+savedSMA.getName()+" Your Id is "+savedSMA.getEmail()
+//                +" and Role- "+savedSMA.getRole()+" has been successfully created");
+//        response.setSuccess(true);
+
+        return res;
     }
 }
