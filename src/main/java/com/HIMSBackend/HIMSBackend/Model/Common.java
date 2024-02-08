@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 import java.util.Date;
 import java.util.Set;
 
+@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +16,9 @@ import java.util.Set;
 @Setter
 public class Common {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "is_activated")
     private boolean isActivated;
@@ -35,7 +39,7 @@ public class Common {
     @Column(name = "dob")
     private Date dob;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
 
@@ -68,6 +72,9 @@ public class Common {
 
     @Column(name = "email_token")
     private String emailToken;
+
+    @Column(name = "phone_number") // new added
+    private String phoneNumber;
 
     @Column(name = "is_phone_number_set")
     private boolean isPhoneNumberSet;

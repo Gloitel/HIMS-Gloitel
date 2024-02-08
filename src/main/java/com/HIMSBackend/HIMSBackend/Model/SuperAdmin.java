@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
+@DiscriminatorValue("SuperAdmin")
 public class SuperAdmin extends Common {
 
     @Id
