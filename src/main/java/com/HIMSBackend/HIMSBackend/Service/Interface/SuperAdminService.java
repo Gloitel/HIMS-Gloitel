@@ -5,6 +5,6 @@ import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface SuperMasterAdminService {
+public interface SuperAdminService {
     SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto);
 }

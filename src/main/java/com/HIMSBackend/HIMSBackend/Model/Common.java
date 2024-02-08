@@ -1,5 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Model;
 
+import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -7,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
 import java.util.Set;
-
+@MappedSuperclass
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,22 +26,37 @@ public class Common {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "email")
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private RoleType role;
+
+    @Column(name = "role_type")
+    private String roleType;
+
+
     @Embedded
     private Personal personal;
 
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "avatar_id")
-    private UploadSchema avatar;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "avatar_id")
+//    private UploadSchema avatar;
 
     @Column(name = "dob")
     private Date dob;
 
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "gender")
+//    private Gender gender;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private Gender gender;
+    private Gender.GenderType gender;
 
     @Column(name = "profession")
     private String profession;

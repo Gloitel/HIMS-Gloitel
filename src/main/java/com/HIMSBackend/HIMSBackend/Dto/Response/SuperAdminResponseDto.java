@@ -11,8 +11,14 @@ import lombok.experimental.FieldDefaults;
 @Setter
 public class SuperAdminResponseDto {
 
-    String company_name;
-    String ceo_name;
-    String message;
-
+    String name;
+    String email;
+    String phone_number;
+    boolean isActivated;
+    boolean isPasswordVerified;
+    boolean isPasswordSet;
+    boolean isPhoneNumberVerified;
+    boolean isPhoneNumberSet;
+    boolean isEmailVerified;
+    boolean isEmailSet;
 }
