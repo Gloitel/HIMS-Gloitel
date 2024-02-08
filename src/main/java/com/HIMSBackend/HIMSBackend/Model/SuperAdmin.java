@@ -19,14 +19,13 @@ public class SuperAdmin extends Common {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private RoleType role;
-
+//    @Column(name = "email")
+//    private String email;
+//
+//    @Column(name = "phone_number")
+//    private String phone_number;
+//
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "role")
+//    private RoleType role
 }

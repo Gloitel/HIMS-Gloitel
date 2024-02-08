@@ -11,25 +11,13 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-@DiscriminatorValue("Admin")
+//@DiscriminatorValue("ADMIN")
 public class Admin extends Common {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "email")
-    private String email;
-
-//    @Column(name = "phone_number")
-//    private String phoneNumber;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private RoleType role;
-
-    @Column(name = "role_type")
-    private String roleType;
 
     // Getters and setters
 }

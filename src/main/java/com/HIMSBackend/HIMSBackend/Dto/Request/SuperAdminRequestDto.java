@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 public class SuperAdminRequestDto {
+
     String name;
     String email;
     String phone_no;
