@@ -11,17 +11,18 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
+@DiscriminatorValue("Employee")
 public class Employee extends Common{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+//    @Column(name = "phone_number")
+//    private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
