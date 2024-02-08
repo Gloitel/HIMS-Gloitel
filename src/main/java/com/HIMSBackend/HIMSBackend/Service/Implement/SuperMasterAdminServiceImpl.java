@@ -1,7 +1,8 @@
 package com.HIMSBackend.HIMSBackend.Service.Implement;
 
+import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Enum.RoleType;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
 import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
 import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
@@ -17,13 +18,13 @@ public class SuperMasterAdminServiceImpl implements SuperMasterAdminService {
     @Autowired
     SuperMasterAdminRepository superMasterAdminRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
     @Autowired
     RandomPasswordGenerator passwordGenerator;
 
     @Override
-    public ResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
+    public SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
 
         //Super master admin
         SuperAdmin sma = new SuperAdmin();
@@ -38,18 +39,40 @@ public class SuperMasterAdminServiceImpl implements SuperMasterAdminService {
         sma.setRole(RoleType.valueOf("super_admin"));
         sma.setActivated(true);
 
-        String encPass = passwordEncoder.encode(superMasterAdminRequestDto.getPassword());
-        sma.setPassword(encPass);
+//        String encPass = passwordEncoder.encode(superMasterAdminRequestDto.getPassword());
+//        sma.setPassword(encPass);
+        sma.setPassword(superMasterAdminRequestDto.getPassword());
+
 
         SuperAdmin savedSMA = superMasterAdminRepository.save(sma);
 
         ResponseDto response = new ResponseDto();
+        SuperAdminResponseDto res = new SuperAdminResponseDto();
+//        String name;
+        res.setName(savedSMA.getName());
+//        String email;
+        res.setEmail(savedSMA.getEmail());
+//        String phone_number;
+        res.setPhone_number(savedSMA.getPhoneNumber());
+//        boolean isActivated;
+        res.setActivated(savedSMA.isActivated());
+//        boolean isPasswordVerified;
+        res.setPasswordVerified(savedSMA.isEmailVerified());
+//        boolean isPasswordSet;
+        res.setPasswordSet(savedSMA.isPasswordSet());
+//        boolean isPhoneNumberVerified;
+        res.setPhoneNumberVerified(savedSMA.isPhoneNumberVerified());
+//        boolean isPhoneNumberSet;
+        res.setPhoneNumberSet(savedSMA.isPhoneNumberSet());
+//        boolean isEmailVerified;
+        res.setEmailVerified(savedSMA.isEmailVerified());
+//        boolean isEmailSet;
+        res.setEmailSet(savedSMA.isEmailSet());
 
+//        response.setMessage("Congratulation "+savedSMA.getName()+" Your Id is "+savedSMA.getEmail()
+//                +" and Role- "+savedSMA.getRole()+" has been successfully created");
+//        response.setSuccess(true);
 
-        response.setMessage("Congratulation "+savedSMA.getName()+" Your Id is "+savedSMA.getEmail()
-                +" and Role- "+savedSMA.getRole()+" has been successfully created");
-        response.setSuccess(true);
-
-        return response;
+        return res;
     }
 }
