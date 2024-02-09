@@ -1,4 +1,4 @@
-package com.HIMSBackend.HIMSBackend.Dto.Response;
+package com.HIMSBackend.HIMSBackend.Dto.Request;
 
 
 import lombok.*;
@@ -9,9 +9,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseDto {
+public class AdminRequestDto {
 
-    String message;
-    boolean success;
-
+    String name;
+    String email;
+    String phone_no;
 }

@@ -1,5 +1,7 @@
 package com.HIMSBackend.HIMSBackend.Service.Implement;
 
+import com.HIMSBackend.HIMSBackend.Dto.Request.AdminRequestDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.AdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 //import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,62 +35,37 @@ public class SuperAdminServiceImpl implements SuperAdminService {
     RandomPasswordGenerator passwordGenerator;
 
     @Override
-    public SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superMasterAdminRequestDto) {
+    public SuperAdminResponseDto createSuperMasterAdmin(SuperAdminRequestDto superAdminRequestDto) {
 
         //Super master admin
         SuperAdmin sma = new SuperAdmin();
 
-        sma.setName(superMasterAdminRequestDto.getName());
-        sma.setEmail(superMasterAdminRequestDto.getEmail());
+        sma.setName(superAdminRequestDto.getName());
+        sma.setEmail(superAdminRequestDto.getEmail());
         sma.setEmailSet(true);
-//        sma.setEmailVerified(true);
-       // sma.setIssetIsEmailVerified(true);
         sma.setEmailVerified(true);
-//        sma.setPhoneNumber(superMasterAdminRequestDto.getPhone_no());
-        sma.setPersonal(new Personal(superMasterAdminRequestDto.getEmail(), superMasterAdminRequestDto.getPhone_no()));
+        sma.setPersonal(new Personal(superAdminRequestDto.getEmail(), superAdminRequestDto.getPhone_no()));
         sma.setPhoneNumberSet(true);
-        //sma.setPhoneNumberVerified(true);
         sma.setPhoneNumberVerified(true);
         sma.setRole(RoleType.valueOf("super_admin"));
         sma.setActivated(true);
 
-//        String encPass = passwordEncoder.encode(superMasterAdminRequestDto.getPassword());
-//        sma.setPassword(encPass);
-        sma.setPassword(superMasterAdminRequestDto.getPassword());
+        sma.setPassword(superAdminRequestDto.getPassword());
 
 
         SuperAdmin savedSMA = superAdminRepository.save(sma);
 
-     //   ResponseDto response = new ResponseDto();
         SuperAdminResponseDto res = new SuperAdminResponseDto();
-//        String name;
         res.setName(savedSMA.getName());
-
-//        String email;
         res.setEmail(savedSMA.getEmail());
-//        String phone_number;
-       // res.setPhone_number(savedSMAgetPhoneNumber());
-
         res.setPhone_number(savedSMA.getPersonal().getPersonalPhoneNumber());
-//        boolean isActivated;
         res.setActivated(savedSMA.isActivated());
-//        boolean isPasswordVerified;
-       // res.setPasswordVerified(savedSMA.isEmailVerified());
         res.setPasswordVerified(savedSMA.isPasswordVerified());
-//        boolean isPasswordSet;
         res.setPasswordSet(savedSMA.isPasswordSet());
-//        boolean isPhoneNumberVerified;
         res.setPhoneNumberVerified(savedSMA.isPhoneNumberVerified());
-//        boolean isPhoneNumberSet;
         res.setPhoneNumberSet(savedSMA.isPhoneNumberSet());
-//        boolean isEmailVerified;
         res.setEmailVerified(savedSMA.isEmailVerified());
-//        boolean isEmailSet;
         res.setEmailSet(savedSMA.isEmailSet());
-
-//        response.setMessage("Congratulation "+savedSMA.getName()+" Your Id is "+savedSMA.getEmail()
-//                +" and Role- "+savedSMA.getRole()+" has been successfully created");
-//        response.setSuccess(true);
 
         return res;
     }
@@ -96,5 +73,50 @@ public class SuperAdminServiceImpl implements SuperAdminService {
     @Override
     public List<Admin> getAllAdmins() {
         return adminRepository.findAll();
+    }
+
+    @Override
+    public AdminResponseDto addAdmin(AdminRequestDto adminRequestDto) {
+
+        //Fill admin detail with admindto
+        Admin ad = new Admin();
+        ad.setName(adminRequestDto.getName());
+        ad.setEmail(adminRequestDto.getEmail());
+        ad.setEmailSet(true);
+        ad.setEmailVerified(true);
+        ad.setPersonal(new Personal(adminRequestDto.getEmail(), adminRequestDto.getPhone_no()));
+        ad.setPhoneNumberSet(true);
+        ad.setPhoneNumberVerified(true);
+        ad.setRole(RoleType.valueOf("admin"));
+        ad.setActivated(true);
+
+        // random password generator
+        String pass = RandomPasswordGenerator.generateRandomString(6);
+        ad.setPassword(pass);
+
+        Admin savedAdmin = adminRepository.save(ad);
+
+        //Add response for admin
+        AdminResponseDto res = new AdminResponseDto();
+
+        res.setName(savedAdmin.getName());
+        res.setEmail(savedAdmin.getEmail());
+        res.setPhone_number(savedAdmin.getPersonal().getPersonalPhoneNumber());
+        res.setActivated(savedAdmin.isActivated());
+        res.setPasswordVerified(savedAdmin.isPasswordVerified());
+        res.setPasswordSet(savedAdmin.isPasswordSet());
+        res.setPhoneNumberVerified(savedAdmin.isPhoneNumberVerified());
+        res.setPhoneNumberSet(savedAdmin.isPhoneNumberSet());
+        res.setEmailVerified(savedAdmin.isEmailVerified());
+        res.setEmailSet(savedAdmin.isEmailSet());
+
+        SuperAdmin superAdmin = superAdminRepository.findById(1L).get();
+        List<Admin> adminList = superAdmin.getAdminList();
+        adminList.add(ad);
+
+        superAdmin.setAdminList(adminList);
+        superAdminRepository.save(superAdmin);
+
+        return res;
     }
 }

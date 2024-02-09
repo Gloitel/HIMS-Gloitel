@@ -1,7 +1,8 @@
 package com.HIMSBackend.HIMSBackend.Controller;
 
+import com.HIMSBackend.HIMSBackend.Dto.Request.AdminRequestDto;
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
+import com.HIMSBackend.HIMSBackend.Dto.Response.AdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
 import com.HIMSBackend.HIMSBackend.Model.Admin;
 import com.HIMSBackend.HIMSBackend.Service.Interface.SuperAdminService;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("super-master-admin")
+@RequestMapping("super-admin")
 public class SuperAdminController {
 
     @Autowired
@@ -29,7 +30,7 @@ public class SuperAdminController {
             SuperAdminResponseDto response = superAdminService.createSuperMasterAdmin(superMasterAdminRequestDto);
             payload.put("payload",response);
             payload.put("message","SuccessFully Created SuperAdmin");
-            payload.put("status code",201);
+            payload.put("status code",HttpStatus.CREATED.value());
             payload.put("Success",true);
 
             return new ResponseEntity(payload, HttpStatus.CREATED);
@@ -38,7 +39,7 @@ public class SuperAdminController {
             e.printStackTrace();
             payload.put("payload","Null");
             payload.put("message","Not Created");
-            payload.put("status code - 401",HttpStatus.BAD_REQUEST);
+            payload.put("status code",HttpStatus.BAD_REQUEST.value());
             payload.put("Success",false);
             return new ResponseEntity("Please fill all mendatory fields", HttpStatus.BAD_REQUEST);
         }
@@ -52,8 +53,33 @@ public class SuperAdminController {
 
         payload.put("List of all admin",admins);
         payload.put("message","SuccessFully Created SuperAdmin");
-        payload.put("status code",201);
+        payload.put("status code",HttpStatus.ACCEPTED.value());
         payload.put("Success",true);
         return new ResponseEntity(payload, HttpStatus.ACCEPTED);
     }
+
+    //crate admin api
+    @PutMapping("/add-admin")
+    public ResponseEntity addAdmin(@RequestBody AdminRequestDto adminRequestDto){
+
+        Map<String, Object> payload = new HashMap<>();
+        try{
+            AdminResponseDto response = superAdminService.addAdmin(adminRequestDto);
+            payload.put("payload",response);
+            payload.put("message","SuccessFully Created SuperAdmin");
+            payload.put("status code",HttpStatus.CREATED.value());
+            payload.put("Success",true);
+
+            return new ResponseEntity(payload, HttpStatus.CREATED);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            payload.put("payload","Null");
+            payload.put("message","Not Created");
+            payload.put("status code",HttpStatus.BAD_REQUEST.value());
+            payload.put("Success",false);
+            return new ResponseEntity("Please fill all mendatory fields", HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

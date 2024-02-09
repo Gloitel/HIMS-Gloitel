@@ -1,15 +1,6 @@
 package com.HIMSBackend.HIMSBackend.Service.Interface;
 
-import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.ResponseDto;
-import com.HIMSBackend.HIMSBackend.Dto.Response.SuperAdminResponseDto;
-import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 import com.HIMSBackend.HIMSBackend.Model.Department;
-import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
-import com.HIMSBackend.HIMSBackend.Repository.SuperAdminRepository;
-import com.HIMSBackend.HIMSBackend.Util.RandomPasswordGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
