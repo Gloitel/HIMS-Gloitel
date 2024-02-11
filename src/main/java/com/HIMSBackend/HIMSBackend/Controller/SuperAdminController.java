@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,7 @@ public class SuperAdminController {
     SuperAdminService superAdminService;
 
     @PostMapping("/create")
-    public ResponseEntity createSuperMasterAdmin(@RequestBody SuperAdminRequestDto superMasterAdminRequestDto){
+    public ResponseEntity createSuperAdmin(@RequestBody SuperAdminRequestDto superMasterAdminRequestDto){
 
         Map<String, Object> payload = new HashMap<>();
         try{
@@ -45,18 +47,50 @@ public class SuperAdminController {
         }
     }
 
+//    @GetMapping("/get-all-admins")
+//    public ResponseEntity getAllAdmins(){
+//        Map<String, Object> payload = new HashMap<>();
+//
+//        List<Admin> admins = superAdminService.getAllAdmins();
+//
+//        payload.put("List of all admin",admins);
+//        payload.put("message","SuccessFully Created SuperAdmin");
+//        payload.put("status code",HttpStatus.ACCEPTED.value());
+//        payload.put("Success",true);
+//        return new ResponseEntity(payload, HttpStatus.ACCEPTED);
+//    }
+
+
     @GetMapping("/get-all-admins")
-    public ResponseEntity getAllAdmins(){
+    public ResponseEntity getAllAdmins(Pageable pageable) {
         Map<String, Object> payload = new HashMap<>();
 
-        List<Admin> admins = superAdminService.getAllAdmins();
+        try {
+            // Retrieve a page of admins based on the Pageable
+            Page<Admin> adminPage = superAdminService.getAllAdmins(pageable);
 
-        payload.put("List of all admin",admins);
-        payload.put("message","SuccessFully Created SuperAdmin");
-        payload.put("status code",HttpStatus.ACCEPTED.value());
-        payload.put("Success",true);
-        return new ResponseEntity(payload, HttpStatus.ACCEPTED);
+            // Extract necessary information from the Page
+            List<Admin> admins = adminPage.getContent();
+            long totalElements = adminPage.getTotalElements();
+            int totalPages = adminPage.getTotalPages();
+
+            payload.put("listOfAdmins", admins);
+            payload.put("totalElements", totalElements);
+            payload.put("totalPages", totalPages);
+            payload.put("currentPage", adminPage.getNumber() + 1); // 1-indexed
+            payload.put("pageSize", adminPage.getSize());
+            payload.put("message", "Successfully retrieved admins");
+            payload.put("status code", HttpStatus.ACCEPTED.value());
+            payload.put("success", true);
+
+            return new ResponseEntity<>(payload, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            // Handle exceptions and return an appropriate response
+            e.printStackTrace();
+            return new ResponseEntity<>("Internal server error comes",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 
     //crate admin api
     @PutMapping("/add-admin")

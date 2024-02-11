@@ -7,6 +7,9 @@ import com.HIMSBackend.HIMSBackend.Enum.RoleType;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import com.HIMSBackend.HIMSBackend.Dto.Request.SuperAdminRequestDto;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.HIMSBackend.HIMSBackend.Model.Admin;
 import com.HIMSBackend.HIMSBackend.Model.Personal;
 import com.HIMSBackend.HIMSBackend.Model.SuperAdmin;
@@ -70,9 +73,13 @@ public class SuperAdminServiceImpl implements SuperAdminService {
         return res;
     }
 
+//    @Override
+//    public List<Admin> getAllAdmins(Pageable pageable) {
+//        return adminRepository.findAll(pageable);
+//    }
     @Override
-    public List<Admin> getAllAdmins() {
-        return adminRepository.findAll();
+    public Page<Admin> getAllAdmins(Pageable pageable) {
+        return adminRepository.findAll(pageable);
     }
 
     @Override
